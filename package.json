@@ -4,11 +4,10 @@
   "description": "Chrome extension for sending custom requests to the OpenAI GPT API directly from your browser.",
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.js",
     "test": "node --test"
   },
   "dependencies": {
-    "@teqfw/di": "file:npm/teqfw-di"
+    "@teqfw/di": ">=1.0.1 <2.0.0"
   },
-  "license": "ISC"
+  "license": "Apache-2.0"
 }
