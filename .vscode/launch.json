@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run Single Test (spec reporter)",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/current/bin/node",
+      "args": [
+        "--test",
+        "${workspaceFolder}/test/container.test.js",
+        "--test-reporter=spec",
+        "--test-reporter-destination=stdout"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "neverOpen",
+      "env": { "NODE_OPTIONS": "--enable-source-maps" }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run All Tests (spec reporter)",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/current/bin/node",
+      "args": ["--test", "${workspaceFolder}/test", "--test-reporter=spec", "--test-reporter-destination=stdout"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "neverOpen",
+      "env": { "NODE_OPTIONS": "--enable-source-maps" }
+    }
+  ]
+}
