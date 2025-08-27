@@ -3,7 +3,7 @@
   "name": "Chrome GPT",
   "description": "Chrome extension for sending custom requests to the OpenAI GPT API directly from your browser.",
   "version": "0.1.0",
-  "options_page": "src/options.html",
+  "options_page": "src/html/options.html",
   "permissions": ["storage"],
   "action": {"default_title": "Chrome GPT"}
 }

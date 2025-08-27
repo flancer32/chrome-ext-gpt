@@ -24,6 +24,17 @@ The agent works autonomously, relying on the provided context, and delivers resu
 - All comments and messages in the code must be written in English.
 - Documentation inside the product repo (README, build/install instructions) must also be written in English.
 
+## NPM and Project Structure
+
+- The project uses npm for dependency management and building.
+- First dependency: `@teqfw/di` provides a lightweight DI container.
+- Source files are organized under `./src/`:
+  - `html/` for HTML files
+  - `js/` for JavaScript sources
+    - `di/` for modules loaded through the DI container
+  - `css/` for style sheets
+  - `img/` for images and icons
+
 ---
 
 ## Cognitive Context Usage
