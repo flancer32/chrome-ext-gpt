@@ -22,7 +22,7 @@
       "request": "launch",
       "name": "Run All Tests (spec reporter)",
       "runtimeExecutable": "${env:HOME}/.nvm/versions/node/current/bin/node",
-      "args": ["--test", "${workspaceFolder}/test", "--test-reporter=spec", "--test-reporter-destination=stdout"],
+      "runtimeArgs": ["--test", "${workspaceFolder}/test/**/*.test.js", "--test-reporter=spec", "--test-reporter-destination=stdout"],
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}",
       "internalConsoleOptions": "neverOpen",
