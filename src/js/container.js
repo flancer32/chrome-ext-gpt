@@ -1,18 +1,32 @@
-// use relative path to allow running in browser and in Node.js
+// src/js/container.js
+// Works in: Chrome extension (MV3), plain browser (http/https), and Node.js (ESM)
+
 import Container from "../../node_modules/@teqfw/di/src/Container.js";
 
-// In Chrome extension context (ESM)
-const url = new URL(import.meta.url);
-const appDir = new URL("./di", url).href;
-const openAiDir = new URL("../../node_modules/openai", url).href;
+// -- helpers
+// Comments in code must be in English
+function relDir(fromUrl, rel) {
+ return new URL(rel, fromUrl).href;
+}
 
+// -- roots
+const here = new URL(import.meta.url);
+
+// App DI root (your own modules)
+const appRoot = relDir(here, "./di/");
+
+// Vendor root(s) from node_modules (ESM only)
+const openaiRoot = relDir(here, "../../node_modules/openai/");
+
+// -- container
 /** @type {TeqFw_Di_Container} */
 const container = new Container();
-// Get the resolver from the container
 const resolver = container.getResolver();
 
-// Define the namespace root for dependencies, allowing the container to resolve identifiers like 'App_*'
-resolver.addNamespaceRoot("GptExt_", appDir);
-resolver.addNamespaceRoot("openai_", openAiDir);
+// Register namespace roots. Example depIds:
+//  - "GptExt_Store_SettingsRepo$" -> src/js/di/Store/SettingsRepo.js
+//  - "openai_index"               -> node_modules/openai/index.js
+resolver.addNamespaceRoot("GptExt_", appRoot);
+resolver.addNamespaceRoot("openai_", openaiRoot, "mjs");
 
 export default container;

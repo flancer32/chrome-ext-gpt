@@ -12,7 +12,7 @@ const repoFactory = (settings) => ({
 });
 
 const getTester = async (settings) => {
-  container.register("openai_index", openaiMock);
+  container.register("openai_index$", openaiMock);
   container.register("GptExt_Store_SettingsRepo$", repoFactory(settings));
   return await container.get("GptExt_Provider_TestOpenAI$$");
 };

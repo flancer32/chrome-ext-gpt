@@ -1,4 +1,5 @@
 // Comments in code must be in English
+export const deps = ["openai_index", "GptExt_Services_Storage$"]; // explicit deps
 export default class GptExt_Provider_TestOpenAI {
   /** @param {{ openai_index: any, GptExt_Store_SettingsRepo$: any }} deps */
   constructor({ openai_index, GptExt_Store_SettingsRepo$ }) {
@@ -22,12 +23,12 @@ export default class GptExt_Provider_TestOpenAI {
     const timer = setTimeout(() => controller.abort(), 20_000);
 
     try {
-      const client = new this._OpenAI({ apiKey, baseURL: baseUrl });
+      const client = new this._OpenAI({ apiKey, baseURL: baseUrl, dangerouslyAllowBrowser: true });
       const resp = await client.chat.completions.create(
         {
           model,
-          messages: [{ role: "user", content: "что ты знаешь про TeqFW?" }],
-          temperature: 0.2,
+          messages: [{ role: "user", content: "How to use DI in browser extensions?" }],
+          // temperature: 0.2,
         },
         { signal: controller.signal }
       );
@@ -39,7 +40,7 @@ export default class GptExt_Provider_TestOpenAI {
         return "Unauthorized / Forbidden. Check API key or org settings.";
       }
       if (e?.status === 429 || /429/.test(msg)) return "Rate limit.";
-      if (e?.status >= 500 && e?.status < 600 || /5\d\d/.test(msg)) {
+      if ((e?.status >= 500 && e?.status < 600) || /5\d\d/.test(msg)) {
         return "Upstream error.";
       }
       if (e?.name === "AbortError" || /aborted|timeout|network/i.test(msg)) {
@@ -51,4 +52,3 @@ export default class GptExt_Provider_TestOpenAI {
     }
   }
 }
-

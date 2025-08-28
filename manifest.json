@@ -5,5 +5,6 @@
   "version": "0.1.0",
   "options_page": "src/html/options.html",
   "permissions": ["storage"],
-  "action": {"default_title": "Chrome GPT"}
+  "host_permissions": ["https://api.openai.com/*"],
+  "action": { "default_title": "Chrome GPT" }
 }
