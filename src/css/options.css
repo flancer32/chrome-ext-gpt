@@ -23,3 +23,26 @@ button {
   font-size: 12px;
   opacity: 0.7;
 }
+
+#popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popup-backdrop .popup {
+  background: #fff;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#popup-backdrop pre {
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+}
