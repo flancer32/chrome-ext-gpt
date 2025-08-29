@@ -18,9 +18,9 @@ export default class GptExt_Provider_TestOpenAI {
     if (!model) throw new Error("Missing model");
     if (!apiKey) throw new Error("Missing apiKey");
 
-    // Setup abort controller with 20s timeout
+    // Setup abort controller with 60s timeout
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 20_000);
+    const timer = setTimeout(() => controller.abort(), 60_000);
 
     try {
       const client = new this._OpenAI({ apiKey, baseURL: baseUrl, dangerouslyAllowBrowser: true });
