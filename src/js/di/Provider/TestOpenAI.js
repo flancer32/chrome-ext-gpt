@@ -1,5 +1,4 @@
 // Comments in code must be in English
-export const deps = ["openai_index", "GptExt_Services_Storage$"]; // explicit deps
 export default class GptExt_Provider_TestOpenAI {
   /** @param {{ openai_index: any, GptExt_Store_SettingsRepo$: any }} deps */
   constructor({ openai_index, GptExt_Store_SettingsRepo$ }) {
