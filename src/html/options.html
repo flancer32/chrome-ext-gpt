@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'self'" />
     <title>Chrome GPT - Options</title>
     <link rel="stylesheet" href="../css/options.css" />
   </head>
@@ -21,15 +22,8 @@
         <input type="password" id="apiKey" placeholder="sk-..." />
       </label>
       <button id="save">Save</button>
-      <button id="btn-test-openai" disabled>Test OpenAI</button>
       <p id="status"></p>
     </main>
-    <script type="module">
-      import container from "../js/container.js";
-      document.addEventListener("DOMContentLoaded", async () => {
-        const page = await container.get("GptExt_Ui_Page_Options$");
-        await page.init();
-      });
-    </script>
+    <script type="module" src="../js/options.js"></script>
   </body>
 </html>

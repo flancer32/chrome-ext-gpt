@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'self'" />
     <title>Chrome GPT Menu</title>
   </head>
   <body>
@@ -9,12 +10,6 @@
       <li id="open-options">Options</li>
       <li id="open-prompts">Prompts</li>
     </ul>
-    <script type="module">
-      import container from "../../js/container.js";
-      document.addEventListener("DOMContentLoaded", async () => {
-        const page = await container.get("GptExt_Ui_Toolbar_Action$");
-        page.init();
-      });
-    </script>
+    <script type="module" src="../../js/toolbar/action.js"></script>
   </body>
 </html>

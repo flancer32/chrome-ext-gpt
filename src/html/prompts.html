@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'self'" />
     <title>Prompt Manager</title>
     <link rel="stylesheet" href="../css/prompts.css" />
   </head>
@@ -12,12 +13,6 @@
       <input type="text" id="new-prompt" placeholder="New prompt" />
       <button id="add">Add</button>
     </main>
-    <script type="module">
-      import container from "../js/container.js";
-      document.addEventListener("DOMContentLoaded", async () => {
-        const page = await container.get("GptExt_Ui_Page_Prompts$");
-        await page.init();
-      });
-    </script>
+    <script type="module" src="../js/prompts.js"></script>
   </body>
 </html>
