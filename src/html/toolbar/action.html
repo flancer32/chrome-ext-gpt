@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chrome GPT Menu</title>
+  </head>
+  <body>
+    <ul id="menu"></ul>
+    <script type="module" src="../../js/action.js"></script>
+  </body>
+  <script>
+    import container from "../../js/container.js";
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const repo = await container.get("GptExt_Store_SettingsRepo$");
+      const settings = (await repo.load()) || {};
+      const menu = Array.isArray(settings.menu)
+        ? settings.menu
+        : [
+            { name: "First", url: "https://chat.openai.com/" },
+            { name: "Second", url: "https://chat.openai.com/" },
+            { name: "Third", url: "https://chat.openai.com/" },
+          ];
+
+      const ul = document.getElementById("menu");
+      menu.forEach((opt) => {
+        const li = document.createElement("li");
+        li.textContent = opt.name;
+        li.addEventListener("click", () => {
+          chrome.runtime.sendMessage({ action: "openDialog", payload: opt });
+        });
+        ul.appendChild(li);
+      });
+    });
+  </script>
+</html>
