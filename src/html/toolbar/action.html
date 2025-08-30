@@ -9,6 +9,12 @@
       <li id="open-options">Options</li>
       <li id="open-prompts">Prompts</li>
     </ul>
-    <script type="module" src="../../js/action.js"></script>
+    <script type="module">
+      import container from "../../js/container.js";
+      document.addEventListener("DOMContentLoaded", async () => {
+        const page = await container.get("GptExt_Ui_Toolbar_Action$");
+        page.init();
+      });
+    </script>
   </body>
 </html>
