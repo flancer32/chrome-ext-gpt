@@ -12,6 +12,12 @@
       <input type="text" id="new-prompt" placeholder="New prompt" />
       <button id="add">Add</button>
     </main>
-    <script type="module" src="../js/prompts.entry.js"></script>
+    <script type="module">
+      import container from "../js/container.js";
+      document.addEventListener("DOMContentLoaded", async () => {
+        const page = await container.get("GptExt_Ui_Page_Prompts$");
+        await page.init();
+      });
+    </script>
   </body>
 </html>
